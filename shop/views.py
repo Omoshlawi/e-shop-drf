@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from rest_framework import viewsets
 
+from shop.filters import ProductFilters
 from shop.models import Category, Product
 from shop.serializers import CategorySerializer, ProductSerializer
 
@@ -19,6 +20,7 @@ class ProductViewSet(viewsets.ReadOnlyModelViewSet):
     serializer_class = ProductSerializer
     lookup_field = 'slug'
     queryset = Product.objects.all()
+    filterset_class = ProductFilters
 
 
 
