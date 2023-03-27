@@ -13,4 +13,6 @@ class ApiRootView(APIView):
             "users_url": reverse.reverse_lazy('users:user-list', request=request),
             'categories_url': reverse.reverse_lazy('shop:category-list', request=request),
             'products_url': reverse.reverse_lazy('shop:product-list', request=request),
+            'orders_url': reverse.reverse_lazy('order:order-list', request=request),
+            'order_items_url': reverse.reverse_lazy('order:item-list', request=request),
         })
