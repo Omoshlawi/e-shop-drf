@@ -24,8 +24,16 @@ class ProductFilters(rest_framework.FilterSet):
         lookup_expr='lte',
         label='Maximum Price'
     )
-    tags = rest_framework.CharFilter(field_name='tags', lookup_expr='name')
+    tags = rest_framework.CharFilter(
+        field_name='tags',
+        label="Comma separated Tags",
+        method='filter_tags'
+    )
 
     class Meta:
         model = Product
         fields = ('name', 'rating')
+
+    def filter_tags(self, queryset, name, value):
+        tags = value.replace(' ', '').split(",")
+        return queryset.filter(**{'tags__name__in': tags})

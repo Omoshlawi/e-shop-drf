@@ -5,7 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9eb25e7d-0eb6-4ef0-96d5-63f1cbc7b8d1" name="Changes" comment="Done with the shops app basic funtions, displaying all products cartegories and slug fine, also tags works greate, no filters added to products yet">
-      <change afterPath="$PROJECT_DIR$/shop/filters.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shop/filters.py" beforeDir="false" afterPath="$PROJECT_DIR$/shop/filters.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/shop/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/shop/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
