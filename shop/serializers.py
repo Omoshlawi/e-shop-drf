@@ -1,3 +1,4 @@
+from django.db.models import Avg
 from rest_framework import serializers
 from taggit.serializers import TaggitSerializer, TagListSerializerField
 
@@ -43,6 +44,7 @@ class ProductSerializer(TaggitSerializer, serializers.HyperlinkedModelSerializer
         read_only=True,
         many=True
     )
+
     class Meta:
         model = Product
         fields = (
@@ -51,6 +53,33 @@ class ProductSerializer(TaggitSerializer, serializers.HyperlinkedModelSerializer
             'rating', 'tags',
             'images', 'reviews'
         )
+
+    def to_representation(self, instance):
+        dictionary = super().to_representation(instance)
+        reviews_urls = dictionary.pop('reviews')
+        reviews = {
+            "reviews": {
+                "count": len(reviews_urls),
+                "average_rating": self.get_average_rating(instance),
+                "urls": reviews_urls
+            }
+        }
+        category_url = dictionary.pop('category')
+        category = {
+            'category': {
+                'url': category_url,
+                'name': instance.category.name
+            }
+        }
+        dictionary.update(reviews)
+        dictionary.update(category)
+        return dictionary
+
+    def get_average_rating(self, instance):
+        _avg = Review.objects.filter(product=instance).aggregate(
+            Avg('rating')
+        )['rating__avg']
+        return _avg or 0
 
 
 class ReviewSerializer(serializers.HyperlinkedModelSerializer):
@@ -67,4 +96,3 @@ class ReviewSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Review
         fields = ('url', 'user', 'product', 'rating', 'created', 'review')
-

@@ -17,6 +17,18 @@ class OrderItemSerializer(serializers.HyperlinkedModelSerializer):
         queryset=Product.objects.filter(available=True)
     )
 
+    def to_representation(self, instance):
+        dictionary = super().to_representation(instance)
+        url = dictionary.pop('product')
+        product = {
+            'product': {
+                'url': url,
+                'name': instance.product.name,
+            }
+        }
+        dictionary.update(product)
+        return dictionary
+
     class Meta:
         model = OrderItem
         fields = (
