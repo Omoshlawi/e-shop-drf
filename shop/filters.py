@@ -1,6 +1,6 @@
 from django_filters import rest_framework
 
-from shop.models import Product
+from shop.models import Product, Review
 
 
 class ProductFilters(rest_framework.FilterSet):
@@ -37,3 +37,20 @@ class ProductFilters(rest_framework.FilterSet):
     def filter_tags(self, queryset, name, value):
         tags = value.replace(' ', '').split(",")
         return queryset.filter(**{'tags__name__in': tags})
+
+
+class ReviewsFilterSet(rest_framework.FilterSet):
+    author = rest_framework.CharFilter(
+        field_name='user',
+        lookup_expr='email',
+        label='User email Address'
+    )
+    product = rest_framework.CharFilter(
+        field_name='product',
+        lookup_expr='name',
+        label='Product'
+    )
+
+    class Meta:
+        model = Review
+        fields = ('rating',)

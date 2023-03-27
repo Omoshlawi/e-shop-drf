@@ -1,9 +1,9 @@
 from django.shortcuts import render
 from rest_framework import viewsets
-
-from shop.filters import ProductFilters
-from shop.models import Category, Product
-from shop.serializers import CategorySerializer, ProductSerializer
+from rest_framework import permissions
+from shop.filters import ProductFilters, ReviewsFilterSet
+from shop.models import Category, Product, Review
+from shop.serializers import CategorySerializer, ProductSerializer, ReviewSerializer
 
 
 # Create your views here.
@@ -21,6 +21,20 @@ class ProductViewSet(viewsets.ReadOnlyModelViewSet):
     lookup_field = 'slug'
     queryset = Product.objects.all()
     filterset_class = ProductFilters
+
+
+class ReviewViewSet(viewsets.ModelViewSet):
+    serializer_class = ReviewSerializer
+    queryset = Review.objects.all()
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
+    search_fields = ['review__icontains']
+    filterset_class = ReviewsFilterSet
+
+    def perform_create(self, serializer):
+        serializer.save(user=self.request.user)
+
+
+
 
 
 

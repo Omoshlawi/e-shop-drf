@@ -1,7 +1,7 @@
 from rest_framework import serializers
 from taggit.serializers import TaggitSerializer, TagListSerializerField
 
-from shop.models import Category, Product, ProductImage
+from shop.models import Category, Product, ProductImage, Review
 
 
 class CategorySerializer(serializers.HyperlinkedModelSerializer):
@@ -38,13 +38,33 @@ class ProductSerializer(TaggitSerializer, serializers.HyperlinkedModelSerializer
         lookup_field='slug'
     )
     images = ProductImageSerializer(read_only=True, many=True)
-
+    reviews = serializers.HyperlinkedIdentityField(
+        view_name='shop:review-detail',
+        read_only=True,
+        many=True
+    )
     class Meta:
         model = Product
         fields = (
             'url', 'category', 'name', 'slug', 'image',
             'description', 'price', 'updated',
             'rating', 'tags',
-            'images'
+            'images', 'reviews'
         )
+
+
+class ReviewSerializer(serializers.HyperlinkedModelSerializer):
+    url = serializers.HyperlinkedIdentityField(view_name='shop:review-detail')
+    user = serializers.HyperlinkedIdentityField(
+        view_name='users:user-detail',
+        read_only=True
+    )
+    product = serializers.HyperlinkedRelatedField(
+        view_name='shop:product-detail',
+        queryset=Product.objects.all(), lookup_field='slug'
+    )
+
+    class Meta:
+        model = Review
+        fields = ('url', 'user', 'product', 'rating', 'created', 'review')
 
