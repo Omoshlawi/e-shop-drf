@@ -128,6 +128,9 @@ class UserProfileSerializer(serializers.ModelSerializer):
             profile = instance.profile
             if profile:
                 for key in profile_data:
+                    # Check if image is unmordified then avoid resaving
+                    if key == 'image' and str(profile_data[key]) == str(profile.image).split("/")[-1]:
+                        continue
                     setattr(profile, key, profile_data[key])
                 profile.save()
         except ObjectDoesNotExist:
