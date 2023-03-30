@@ -16,6 +16,7 @@ class OrderItemSerializer(serializers.HyperlinkedModelSerializer):
         lookup_field='slug',
         queryset=Product.objects.filter(available=True)
     )
+    price = serializers.DecimalField(read_only=True, max_digits=12, decimal_places=2)
 
     def to_representation(self, instance):
         dictionary = super().to_representation(instance)
@@ -70,7 +71,7 @@ class OrderSerializer(serializers.HyperlinkedModelSerializer):
         items = validated_data.pop("items")
         if items:
             for item in items:
-                OrderItem.objects.create(order=order, **item)
+                OrderItem.objects.create(order=order, price=item['product'].price, **item)
         return order
 
     class Meta:

@@ -4,11 +4,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9eb25e7d-0eb6-4ef0-96d5-63f1cbc7b8d1" name="Changes" comment="Done with the shops app basic funtions, displaying all products cartegories and slug fine, also tags works greate, no filters added to products yet">
+    <list default="true" id="9eb25e7d-0eb6-4ef0-96d5-63f1cbc7b8d1" name="Changes" comment="Updated Userrofile serializer to avois updation of image even if the image is same causing multiple same images with dif name">
+      <change afterPath="$PROJECT_DIR$/media/uploads/profile/7e8b5c05-e96f-4930-8c6f-6dbb93cbbf88.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/uploads/profile/7e8b5c05-e96f-4930-8c6f-6dbb93cbbf88_1VviQwM.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/uploads/profile/7e8b5c05-e96f-4930-8c6f-6dbb93cbbf88_w0wfGOp.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/uploads/profile/7e8b5c05-e96f-4930-8c6f-6dbb93cbbf88_w0wfGOp_5Z4ZYdN.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/uploads/profile/7e8b5c05-e96f-4930-8c6f-6dbb93cbbf88_zQOSsz7.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/uploads/profile/cc400e9a-1c3b-4cde-b3a0-f29fb56c9d94.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/uploads/profile/ddba02e5-cd35-4ed5-98ef-d1ea208c33d9.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/uploads/profile/fa58d954-1ee1-453e-bf5e-c0d5c5f92d17.jpeg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/eshop/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/eshop/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/users/serializers.py" beforeDir="false" afterPath="$PROJECT_DIR$/users/serializers.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/order/serializers.py" beforeDir="false" afterPath="$PROJECT_DIR$/order/serializers.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -123,7 +130,14 @@
       <option name="project" value="LOCAL" />
       <updated>1679919925432</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Updated Userrofile serializer to avois updation of image even if the image is same causing multiple same images with dif name">
+      <created>1680102338295</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1680102338295</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -143,7 +157,8 @@
     <MESSAGE value="Done with user token authentications" />
     <MESSAGE value="Configured taggit and also added shop models, all good" />
     <MESSAGE value="Done with the shops app basic funtions, displaying all products cartegories and slug fine, also tags works greate, no filters added to products yet" />
-    <option name="LAST_COMMIT_MESSAGE" value="Done with the shops app basic funtions, displaying all products cartegories and slug fine, also tags works greate, no filters added to products yet" />
+    <MESSAGE value="Updated Userrofile serializer to avois updation of image even if the image is same causing multiple same images with dif name" />
+    <option name="LAST_COMMIT_MESSAGE" value="Updated Userrofile serializer to avois updation of image even if the image is same causing multiple same images with dif name" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
