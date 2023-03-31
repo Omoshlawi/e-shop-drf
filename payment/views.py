@@ -1,3 +1,4 @@
+from django.db.models import Q
 from django.shortcuts import render
 from rest_framework import viewsets
 from rest_framework import permissions
@@ -14,7 +15,13 @@ class PaymentViewSet(viewsets.ReadOnlyModelViewSet):
     serializer_class = PaymentSerializer
 
     def get_queryset(self):
-        return Payment.objects.filter(order__user=self.request.user, completed=True)
+        """
+        the Q object is used to combine multiple conditions using the & operator.
+        """
+        return Payment.objects.filter(
+            Q(order__user=self.request.user) &
+            Q(transactions__isnull=False)
+        ).distinct()
 
 
 class TransactionViewSet(viewsets.ReadOnlyModelViewSet):
