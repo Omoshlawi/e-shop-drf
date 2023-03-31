@@ -32,6 +32,9 @@ class Order(models.Model):
     def get_balance(self):
         return self.get_total_cost() - self.get_amount_paid()
 
+    def get_order_id(self):
+        return f"ORD-{self.id}-{self.created.year}"
+
 
 class OrderItem(models.Model):
     order = models.ForeignKey(Order, related_name='items', on_delete=models.CASCADE)
@@ -44,3 +47,4 @@ class OrderItem(models.Model):
 
     def get_cost(self):
         return self.price * self.quantity
+

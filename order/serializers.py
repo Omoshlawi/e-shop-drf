@@ -62,7 +62,7 @@ class OrderSerializer(serializers.HyperlinkedModelSerializer):
     balance = serializers.SerializerMethodField(method_name='get_balance')
 
     def get_order_id(self, obj):
-        return f"ORD-{obj.id}-{obj.created.year}"
+        return obj.get_order_id()
 
     def get_total(self, obj):
         return obj.get_total_cost()

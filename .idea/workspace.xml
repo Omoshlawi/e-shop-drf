@@ -4,9 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9eb25e7d-0eb6-4ef0-96d5-63f1cbc7b8d1" name="Changes" comment="Whwn creating order items, only product and quantity needed, price is predetermined from product and works greate">
+    <list default="true" id="9eb25e7d-0eb6-4ef0-96d5-63f1cbc7b8d1" name="Changes" comment="Orders updated and now showing even the pro category, order id and item total cost">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/order/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/order/models.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/order/serializers.py" beforeDir="false" afterPath="$PROJECT_DIR$/order/serializers.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/payment/serializers.py" beforeDir="false" afterPath="$PROJECT_DIR$/payment/serializers.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/payment/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/payment/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -135,7 +138,14 @@
       <option name="project" value="LOCAL" />
       <updated>1680153168580</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Orders updated and now showing even the pro category, order id and item total cost">
+      <created>1680248269802</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1680248269802</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -157,7 +167,8 @@
     <MESSAGE value="Done with the shops app basic funtions, displaying all products cartegories and slug fine, also tags works greate, no filters added to products yet" />
     <MESSAGE value="Updated Userrofile serializer to avois updation of image even if the image is same causing multiple same images with dif name" />
     <MESSAGE value="Whwn creating order items, only product and quantity needed, price is predetermined from product and works greate" />
-    <option name="LAST_COMMIT_MESSAGE" value="Whwn creating order items, only product and quantity needed, price is predetermined from product and works greate" />
+    <MESSAGE value="Orders updated and now showing even the pro category, order id and item total cost" />
+    <option name="LAST_COMMIT_MESSAGE" value="Orders updated and now showing even the pro category, order id and item total cost" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

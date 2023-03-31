@@ -14,7 +14,7 @@ class PaymentViewSet(viewsets.ReadOnlyModelViewSet):
     serializer_class = PaymentSerializer
 
     def get_queryset(self):
-        return Payment.objects.filter(order__user=self.request.user)
+        return Payment.objects.filter(order__user=self.request.user, completed=True)
 
 
 class TransactionViewSet(viewsets.ReadOnlyModelViewSet):
