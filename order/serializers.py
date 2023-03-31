@@ -17,6 +17,10 @@ class OrderItemSerializer(serializers.HyperlinkedModelSerializer):
         queryset=Product.objects.filter(available=True)
     )
     price = serializers.DecimalField(read_only=True, max_digits=12, decimal_places=2)
+    total_cost = serializers.SerializerMethodField()
+
+    def get_total_cost(self, obj):
+        return obj.get_cost()
 
     def to_representation(self, instance):
         dictionary = super().to_representation(instance)
@@ -25,6 +29,9 @@ class OrderItemSerializer(serializers.HyperlinkedModelSerializer):
             'product': {
                 'url': url,
                 'name': instance.product.name,
+                "image": self.context.get("request").build_absolute_uri(
+                    instance.product.image.url) if instance.product.image else None,
+                "category": instance.product.category.name
             }
         }
         dictionary.update(product)
@@ -35,6 +42,7 @@ class OrderItemSerializer(serializers.HyperlinkedModelSerializer):
         fields = (
             'url', 'order', 'price',
             'quantity',
+            'total_cost',
             'product'
         )
 
@@ -47,11 +55,14 @@ class OrderSerializer(serializers.HyperlinkedModelSerializer):
         read_only=True
     )
     items = OrderItemSerializer(many=True)
-
+    order_id = serializers.SerializerMethodField()
     total_cost = serializers.SerializerMethodField(method_name='get_total')
     paid = serializers.SerializerMethodField(method_name='get_paid')
     amount_paid = serializers.SerializerMethodField(method_name='get_amount_paid')
     balance = serializers.SerializerMethodField(method_name='get_balance')
+
+    def get_order_id(self, obj):
+        return f"ORD-{obj.id}-{obj.created.year}"
 
     def get_total(self, obj):
         return obj.get_total_cost()
@@ -77,6 +88,7 @@ class OrderSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Order
         fields = (
+            'order_id',
             'url', 'user', 'items',
             'created', 'updated',
             'total_cost', 'paid',
