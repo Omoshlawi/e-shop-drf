@@ -25,7 +25,7 @@ class PaymentViewSet(viewsets.ReadOnlyModelViewSet):
 
 
 class TransactionViewSet(viewsets.ReadOnlyModelViewSet):
-    permissions = [permissions.IsAuthenticated]
+    permission_classes = [permissions.IsAuthenticated]
     serializer_class = TransactionSerializer
 
     def get_queryset(self):

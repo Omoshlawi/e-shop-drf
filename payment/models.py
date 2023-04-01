@@ -15,6 +15,9 @@ class Payment(models.Model):
     def get_amount_paid(self):
         return sum([transaction.amount for transaction in self.transactions.all()])
 
+    def get_payment_id(self):
+        return f"PYM-{self.id}-{self.created.year}"
+
     def __str__(self):
         return f"{self.order}'s Payment"
 
@@ -30,6 +33,9 @@ class Transaction(models.Model):
     phone_number = models.CharField(max_length=13, blank=True, null=True)
     amount = models.DecimalField(max_digits=11, decimal_places=2)
     created = models.DateTimeField(auto_now=True)
+
+    def get_transaction_id(self):
+        return f"TRN-{self.id}-{self.created.year}"
 
 
 @receiver(post_save, sender=Order)

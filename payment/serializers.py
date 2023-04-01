@@ -8,11 +8,15 @@ class TransactionSerializer(serializers.HyperlinkedModelSerializer):
     payment = serializers.HyperlinkedIdentityField(
         view_name='payment:transaction-detail',
     )
+    transaction_id = serializers.SerializerMethodField()
+
+    def get_transaction_id(self, obj):
+        return obj.get_transaction_id()
 
     class Meta:
         model = Transaction
         fields = (
-            'url', 'payment', 'merchant_request_id', 'checkout_request_id',
+            'url', 'transaction_id', 'payment', 'merchant_request_id', 'checkout_request_id',
             'result_code', 'result_description', 'mpesa_receipt_number',
             'transaction_date', 'phone_number', 'amount', 'created'
         )
@@ -25,6 +29,7 @@ class PaymentSerializer(serializers.HyperlinkedModelSerializer):
     #     view_name='payment:transaction-detail',
     #     many=True
     # )
+    payment_id = serializers.SerializerMethodField()
     transactions = TransactionSerializer(many=True)
     balance = serializers.SerializerMethodField()
     amount_paid = serializers.SerializerMethodField()
@@ -32,7 +37,13 @@ class PaymentSerializer(serializers.HyperlinkedModelSerializer):
 
     class Meta:
         model = Payment
-        fields = ('url', 'order', 'transactions', 'total_cost', 'amount_paid', 'balance', 'completed', 'created')
+        fields = (
+            'url', 'payment_id', 'order', 'transactions', 'total_cost',
+            'amount_paid', 'balance', 'completed', 'created'
+        )
+
+    def get_payment_id(self, obj):
+        return obj.get_payment_id()
 
     def get_balance(self, obj):
         return obj.order.get_balance()
