@@ -18,4 +18,5 @@ class ApiRootView(APIView):
             'order_items_url': reverse.reverse_lazy('order:item-list', request=request),
             'payments_url': reverse.reverse_lazy('payment:payment-list', request=request),
             'transaction_url': reverse.reverse_lazy('payment:transaction-list', request=request),
+            'tags': reverse.reverse_lazy('shop:tag-list', request=request),
         })

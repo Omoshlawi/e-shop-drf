@@ -4,11 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9eb25e7d-0eb6-4ef0-96d5-63f1cbc7b8d1" name="Changes" comment="Update payments to retreive only those that has atleast one transaction">
+    <list default="true" id="9eb25e7d-0eb6-4ef0-96d5-63f1cbc7b8d1" name="Changes" comment="Fixed tny bug of permisions instead of permision classes that caused error when accesing transaction tha require authwenticated user">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/views.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/payment/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/payment/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/payment/serializers.py" beforeDir="false" afterPath="$PROJECT_DIR$/payment/serializers.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shop/serializers.py" beforeDir="false" afterPath="$PROJECT_DIR$/shop/serializers.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shop/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/shop/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shop/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/shop/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -158,7 +161,14 @@
       <option name="project" value="LOCAL" />
       <updated>1680250773299</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="Fixed tny bug of permisions instead of permision classes that caused error when accesing transaction tha require authwenticated user">
+      <created>1680313639950</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1680313639950</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -183,17 +193,7 @@
     <MESSAGE value="Orders updated and now showing even the pro category, order id and item total cost" />
     <MESSAGE value="Order model mordifies to gen id,Payments serializer also updated to include transaction, also payment showing order id, amounts and balances, done and all good" />
     <MESSAGE value="Update payments to retreive only those that has atleast one transaction" />
-    <option name="LAST_COMMIT_MESSAGE" value="Update payments to retreive only those that has atleast one transaction" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/main.py</url>
-          <line>8</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+    <MESSAGE value="Fixed tny bug of permisions instead of permision classes that caused error when accesing transaction tha require authwenticated user" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed tny bug of permisions instead of permision classes that caused error when accesing transaction tha require authwenticated user" />
   </component>
 </project>

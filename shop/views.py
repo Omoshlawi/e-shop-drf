@@ -1,9 +1,12 @@
 from django.shortcuts import render
 from rest_framework import viewsets
 from rest_framework import permissions
+from taggit.models import Tag
+from taggit.serializers import TaggitSerializer, TagListSerializerField
+
 from shop.filters import ProductFilters, ReviewsFilterSet
 from shop.models import Category, Product, Review
-from shop.serializers import CategorySerializer, ProductSerializer, ReviewSerializer
+from shop.serializers import CategorySerializer, ProductSerializer, ReviewSerializer, TagSerializer
 
 
 # Create your views here.
@@ -14,6 +17,11 @@ class CategoryViewSet(viewsets.ReadOnlyModelViewSet):
     lookup_field = 'slug'
     search_fields = ["name"]
     filterset_fields = ['name']
+
+
+class TagsViewSet(viewsets.ReadOnlyModelViewSet):
+    queryset = Tag.objects.all()
+    serializer_class = TagSerializer
 
 
 class ProductViewSet(viewsets.ReadOnlyModelViewSet):

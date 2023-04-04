@@ -1,5 +1,6 @@
 from django.db.models import Avg
 from rest_framework import serializers
+from taggit.models import Tag
 from taggit.serializers import TaggitSerializer, TagListSerializerField
 
 from shop.models import Category, Product, ProductImage, Review
@@ -80,6 +81,12 @@ class ProductSerializer(TaggitSerializer, serializers.HyperlinkedModelSerializer
             Avg('rating')
         )['rating__avg']
         return _avg or 0
+
+
+class TagSerializer(TaggitSerializer, serializers.ModelSerializer):
+    class Meta:
+        model = Tag
+        fields = ['name']
 
 
 class ReviewSerializer(serializers.HyperlinkedModelSerializer):

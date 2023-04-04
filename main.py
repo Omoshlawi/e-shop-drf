@@ -1,16 +1,27 @@
-# This is a sample Python script.
+class Queue:
+    def __init__(self):
+        self._queue = []
 
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
+    def enqueue(self, data):
+        self._queue.append(data)
+
+    def dequeue(self):
+        try:
+            return self._queue.pop(0)
+        except IndexError:
+            print("Your Queue is empty")
+
+    def __str__(self):
+        return str(self._queue)
 
 
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
+myqueue = Queue()
+myqueue.enqueue("Olympus")
+myqueue.enqueue("Moses")
+myqueue.enqueue("Tongoyo")
+myqueue.dequeue()
+myqueue.dequeue()
+myqueue.dequeue()
+myqueue.dequeue()
+print(myqueue)
 
-
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    print_hi('PyCharm')
-
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
