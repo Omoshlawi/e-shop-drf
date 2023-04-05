@@ -61,6 +61,11 @@ class OrderSerializer(serializers.HyperlinkedModelSerializer):
     amount_paid = serializers.SerializerMethodField(method_name='get_amount_paid')
     balance = serializers.SerializerMethodField(method_name='get_balance')
 
+    def validate_items(self, value):
+        if not value:
+            raise serializers.ValidationError("Order items must have at least one product")
+        return value
+
     def get_order_id(self, obj):
         return obj.get_order_id()
 

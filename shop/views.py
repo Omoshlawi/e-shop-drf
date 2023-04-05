@@ -29,6 +29,7 @@ class ProductViewSet(viewsets.ReadOnlyModelViewSet):
     lookup_field = 'slug'
     queryset = Product.objects.all()
     filterset_class = ProductFilters
+    search_fields =['name', 'description']
 
 
 class ReviewViewSet(viewsets.ModelViewSet):
