@@ -50,7 +50,7 @@ class ProductSerializer(TaggitSerializer, serializers.HyperlinkedModelSerializer
         model = Product
         fields = (
             'url', 'category', 'name', 'slug', 'image',
-            'description', 'price', 'updated',
+            'description', 'additional_info', 'price', 'updated',
             'rating', 'tags',
             'images', 'reviews'
         )
@@ -91,10 +91,7 @@ class TagSerializer(TaggitSerializer, serializers.ModelSerializer):
 
 class ReviewSerializer(serializers.HyperlinkedModelSerializer):
     url = serializers.HyperlinkedIdentityField(view_name='shop:review-detail')
-    user = serializers.HyperlinkedIdentityField(
-        view_name='users:user-detail',
-        read_only=True
-    )
+    author = serializers.SerializerMethodField()
     product = serializers.HyperlinkedRelatedField(
         view_name='shop:product-detail',
         queryset=Product.objects.all(), lookup_field='slug'
@@ -102,4 +99,12 @@ class ReviewSerializer(serializers.HyperlinkedModelSerializer):
 
     class Meta:
         model = Review
-        fields = ('url', 'user', 'product', 'rating', 'created', 'review')
+        fields = ('url', 'author', 'product', 'rating', 'created', 'review')
+
+    def get_author(self, instance):
+        return {
+            'name': instance.user.get_full_name(),
+            "image": self.context.get("request").build_absolute_uri(
+                instance.user.profile.image.url
+            ) if instance.user.profile.image else None,
+        }
